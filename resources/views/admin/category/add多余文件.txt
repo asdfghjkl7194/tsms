@@ -1,0 +1,111 @@
+   <div id="category">
+								   			@if($v['parent_id'] == 0)
+									   			<ul cate_id="{$v.cate_id}" parent_id="{$v.parent_id}">
+									   				<li>
+									   					{{$v->cate_name}}
+									   					
+									   					@if(!empty($data))
+									   					@foreach($data as $v2)
+													   			@if($v['cate_id'] == $v2['parent_id'])
+														   			<ul cate_id="{{$v2->cate_id}}" parent_id="{{$v2->parent_id}}">
+														   				<li>
+														   					{{$v2->cate_name}}
+														   					
+														   					@if(!empty($data))
+														   					@foreach($data as $v3)
+																		   			@if($v2['cate_id'] == $v3['parent_id'])
+																			   			<ul cate_id="{{$v3->cate_id}}" parent_id="{{$v3->parent_id}}">
+																			   				<li>
+																			   					{{$v3->cate_name}}
+																			   				</li>
+																			   			</ul>
+																		   			@endif
+																			@endforeach
+																			@endif
+														   					
+														   				</li>
+														   			</ul>
+												   				@endif
+														@endforeach
+														@endif
+									   					
+									   				</li>
+									   			</ul>
+								   			@endif
+
+									<script src="/static/jquery.js" type="text/javascript" charset="utf-8"></script>
+									<script type="text/javascript">
+										// 不做了没用
+//										$(document).ready(function(){
+//											$(document).on("click", "#category", function(){
+//												$(this).children('ul').show();
+//											});
+//											$(document).on("click", "#category ul", function(){
+////												$(this).parent().children('ul').hide();//所有兄弟节点全部隐藏
+////												$("#category ul").shwo();
+//												$cate_id = $(this).attr('cate_id');
+//												$("#category ul[parent_id="+$cate_id+"]").show();
+//											});
+//										});
+									</script>
+								   	<hr>
+								   	<!--楼下备份智商不够用了-->
+								   	{volist name="data" id="v"}
+								   
+									   		<?php// 	for($i=0; $i<($v['nbsp']); $i++){ 
+									   		<?php 	for($i=0; $i<0; $i++){ 
+									   					//echo $v['nbsp'].'???'.($i+1);
+											   			if($v['nbsp'] == ($i+1)){ 
+											?>
+												   			<ul>
+											   					<li>
+											   						<span>{$v.cate_name}</span>
+											   					</li>
+											   				</ul>
+											<?php			for($j=0; $j<($v['nbsp']); $j++){ ?>
+											   					</li>
+											   				</ul>
+											<?php			}
+										   	 			}else{ ?>
+											   				<ul>
+											   					<li>
+									   		<?php 		}
+									   				} ?>
+								   		
+									{/volist}
+								   	<hr>
+								   	<ul>
+								   		<li>
+								   			--请选择分类--
+								   			<ul>
+									   			<li>
+									   				<ul>
+									   					<li>
+									   						
+									   					</li>
+									   				</ul>
+									   			</li>
+								   			</ul>
+								   		</li>
+								   	</ul>
+								   <!--这里使用ul吧
+									 <dl>
+										<dt>--请选择--</dt>
+										<dd>
+											<dl>
+												<dt>这里定位显示顶级</dt>
+												<dd>
+													<dl>
+														<dt>这里显示顶级下一级</dt>
+														<dd>
+															321
+														</dd>
+													</dl>
+												</dd>
+											</dl>
+										</dd>
+									</dl> -->
+								   
+                                </div>
+								
+								
